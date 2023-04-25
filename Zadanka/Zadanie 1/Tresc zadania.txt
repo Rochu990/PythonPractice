@@ -1,0 +1,13 @@
+-Napisz program który poprosi użytkownika o podanie jakiegoś ciągu znaków
+-Następnie ten ciąg znaków podziel po spacji (podpowiedź - poszukaj funkcji "split"
+-Dla każdego słowa policz ilość liter
+-Całość wypisz na ekranie w postaci "<słowo> <ilość liter>",
+
+Przykład:
+Wejście:
+"ala ma kota"
+
+Wyjście:
+"ala 3"
+"ma 2"
+"kota 4"
