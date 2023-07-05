@@ -27,4 +27,4 @@ with open(user_choice) as f:
         # print(line)
         words_list = line.split()
         for i in words_list:
-            print(i + " " + str(len(i)))
+            print((i + " " + str(len(i))).capitalize())

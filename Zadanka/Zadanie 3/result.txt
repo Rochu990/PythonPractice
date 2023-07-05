@@ -1,3 +1,0 @@
-ala 3
-ma 2
-kota 4

@@ -17,7 +17,7 @@ user_choice = input()
 
 with open('result.txt', 'w') as file:
     for word in user_choice.split():    
-        file.write(word + " " + str(len(word)) + "\n")
+        file.write((word + " " + str(len(word)) + "\n").capitalize())
 
 
     
