@@ -17,4 +17,4 @@ user_choice = input()
 words_list = user_choice.split()
 
 for word in words_list:
-    print(word + " " + str(len(word)))
+    print((word + " " + str(len(word))).capitalize())
