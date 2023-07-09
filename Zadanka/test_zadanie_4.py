@@ -1,6 +1,11 @@
 import unittest
-import zadanie_4
+from zadanie_4 import fun
 
+words = ['ala', 'ola']
+class TestFun(unittest.TestCase):
+    def test_fun(self):
+        result = fun(words)
+        self.assertEqual((['ala 3', 'ola 3']), result)
 
 
 
