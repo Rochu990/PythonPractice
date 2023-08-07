@@ -1,7 +1,7 @@
 # Napisz funkcję która otrzyma w parametrze listę stringów, a na wyjściu zwróci listę w postaci <slowo> <ilość liter>
 
 
-words = ["ala"]
+# words = ["ala"]
 
 def fun(x):
     result = []
@@ -9,9 +9,9 @@ def fun(x):
         result.append(f'{word} {len(word)}')
     return result              
     
-result = fun(words)
+# result = fun(words)
 
-print(result)
+# print(result)
 
 
 

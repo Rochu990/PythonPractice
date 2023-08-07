@@ -18,6 +18,12 @@
 # "ma 2"
 # "kota 4"
 
+# ---------------------------------------------
+# Zadanie 5
+# Zrefaktoryzuj zadania 1-4, tak żeby
+# a) wszystkie korzystały z funkcji z zadania 4 (powinny ją importować)
+
+from zadanie_4 import fun
 print("Hej! Podaj nazwę pliku, który chciałbys otworzyć(wraz z rozszerzeniem)")
 
 user_choice = input()
@@ -26,5 +32,4 @@ with open(user_choice) as f:
     for line in f:
         # print(line)
         words_list = line.split()
-        for i in words_list:
-            print((i + " " + str(len(i))).capitalize())
+        print(fun(words_list))

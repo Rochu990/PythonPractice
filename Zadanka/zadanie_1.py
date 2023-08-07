@@ -11,10 +11,20 @@
 # "ala 3"
 # "ma 2"
 # "kota 4"
+
+# -----------------------------------------------
+# Zadanie 5:
+# Zrefaktoryzuj zadania 1-4, tak żeby:
+# a) wszystkie korzystały z funkcji z zadania 4 (powinny ją importować)
+
+from zadanie_4 import fun
+
 print('Hej! Wprowadź dowolne zdanie!!!')
 
 user_choice = input()
 words_list = user_choice.split()
 
-for word in words_list:
-    print((word + " " + str(len(word))).capitalize())
+# for word in words_list:
+#     print((word + " " + str(len(word))).capitalize())
+
+print(fun(words_list))
