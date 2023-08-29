@@ -12,12 +12,15 @@
 # "ma 2"
 # "kota 4"
 
+from zadanie_4 import fun
+
 print('Hej! Wprowadź dowolne zdanie!!!')
 user_choice = input()
 
 with open('result.txt', 'w') as file:
-    for word in user_choice.split():    
-        file.write((word + " " + str(len(word)) + "\n").capitalize())
+    for word in fun(user_choice.split()): 
+        file.write(word)
+        file.write('\n')
 
 
     
