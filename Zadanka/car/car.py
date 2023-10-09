@@ -33,6 +33,7 @@ class Car:
         fuel = (km / 100) * self.combustion
         self.tank_fuel = self.tank_fuel - fuel
         if self.tank_fuel < 0:
+            self.tank_fuel = 0
             return 'Przejechałeś tylko {} km z planowanych {} km biedaku. Jak się nie będziesz uczył pilnie programowania to dalej będizesz zapierdalał w Castoramie i będzie brakować Ci na paliwo'.format(int(abs(km - (fuel_after_tank * fuel))), km)
         else:
             return fuel
