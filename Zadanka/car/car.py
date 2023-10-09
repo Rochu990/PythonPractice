@@ -51,6 +51,7 @@ print(car.details())
 print(car.drive(700))
 print(car.details())
 print(car.refuel(1))
+print(car.refuel(1))
 print(car.details())
 
 
