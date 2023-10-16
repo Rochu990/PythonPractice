@@ -1,7 +1,7 @@
 
 class Robot:
 
-    def __init__(self, x: int, y: int, sight: str):
+    def __init__(self, x: int, y: int, sight = "N"):
         self.x = x
         self.y = y
         self. sight = sight
@@ -41,11 +41,12 @@ class Robot:
     
 
 
-robot = Robot(1, 1, "N")
+robot = Robot(1, 1)
 
 print(robot.position())
 robot.turn_left()
 robot.drive()
-robot.drive()
-robot.drive()
 print(robot.position())
+
+
+
