@@ -41,12 +41,6 @@ class Car(db.Model):
         if self.tank_fuel < 0:
             self.tank_fuel = 0
         
-             
-    def details(self):
-        if self.tank_fuel < 0:
-            return 'spalanie {} objętość baku {}'.format(self.combustion, 0)
-        else:
-            return 'spalanie {} objętość baku {}'.format(self.combustion, self.tank_fuel)
 
 class CarSchema(ma.Schema):
     class Meta:
@@ -81,6 +75,22 @@ def delete_car(id):
     db.session.delete(car)
     db.session.commit()
 
+    return car_schema.jsonify(car)
+
+@app.route('/car/<id>/drive', methods=['POST'])
+def drive(id):
+    
+    car = Car.query.get(id)
+    km = request.json['km']
+    car.drive(km)
+    return car_schema.jsonify(car)
+
+@app.route('/car/<id>/refuel', methods=['POST'])
+def refuel(id):
+    
+    car = Car.query.get(id)
+    fuel = request.json['fuel']
+    car.refuel(fuel)
     return car_schema.jsonify(car)
 
 if __name__ == '__main__':
