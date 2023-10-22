@@ -82,6 +82,8 @@ def get_robot(id):
     robot = Robot.query.get(id)
     return robot_schema.jsonify(robot)
 
+
+
 @app.route('/robot/<id>', methods=['DELETE'])
 def delete_robot(id):
     robot = Robot.query.get(id)
@@ -89,6 +91,43 @@ def delete_robot(id):
     db.session.commit()
 
     return robot_schema.jsonify(robot)
+
+@app.route('/robot/<id>/turn_right', methods=['POST'])
+def turn_right(id):
+    
+    robot = Robot.query.get(id)
+    turn_right = request.json['turn']
+    robot.turn_right()
+    db.session.add(robot)
+    db.session.commit()
+
+    return robot_schema.jsonify(robot)
+
+@app.route('/robot/<id>/turn_left', methods=['POST'])
+def turn_left(id):
+    
+    robot = Robot.query.get(id)
+    turn_left = request.json['turn']
+    robot.turn_left()
+    db.session.add(robot)
+    db.session.commit()
+
+    return robot_schema.jsonify(robot)
+
+@app.route('/robot/<id>/drive', methods=['POST'])
+def drive(id):
+    
+    robot = Robot.query.get(id)
+    drive = request.json['drive']
+    robot.drive()
+    db.session.add(robot)
+    db.session.commit()
+
+    return robot_schema.jsonify(robot)
+
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)

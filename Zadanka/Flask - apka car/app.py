@@ -83,6 +83,9 @@ def drive(id):
     car = Car.query.get(id)
     km = request.json['km']
     car.drive(km)
+    db.session.add(car)
+    db.session.commit()
+
     return car_schema.jsonify(car)
 
 @app.route('/car/<id>/refuel', methods=['POST'])
@@ -91,6 +94,9 @@ def refuel(id):
     car = Car.query.get(id)
     fuel = request.json['fuel']
     car.refuel(fuel)
+    db.session.add(car)
+    db.session.commit()
+    
     return car_schema.jsonify(car)
 
 if __name__ == '__main__':
