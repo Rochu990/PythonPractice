@@ -21,8 +21,7 @@ class Car(db.Model):
     max_fuel = db.Column(db.Integer)
     
 
-    def __init__(self, car_number: str, combustion: int, tank_fuel: int, max_fuel: int):
-        self.car_number = car_number
+    def __init__(self, combustion: int, tank_fuel: int, max_fuel: int):
         self.combustion = combustion
         self.tank_fuel = tank_fuel
         self.max_fuel = max_fuel
@@ -44,7 +43,7 @@ class Car(db.Model):
 
 class CarSchema(ma.Schema):
     class Meta:
-        fields = ("id", "car_number", "combustion", "tank_fuel", "max_fuel")
+        fields = ("id", "combustion", "tank_fuel", "max_fuel")
 
 car_schema = CarSchema()
 cars_schema = CarSchema(many=True)
@@ -52,12 +51,11 @@ cars_schema = CarSchema(many=True)
 
 @app.route('/car', methods=['POST'])
 def add_car():
-    car_number = request.json['car_number']
     combustion = request.json['combustion']
     tank_fuel = request.json['tank_fuel']
     max_fuel = request.json['max_fuel']
 
-    new_car = Car(car_number, combustion, tank_fuel, max_fuel)
+    new_car = Car(combustion, tank_fuel, max_fuel)
 
     db.session.add(new_car)
     db.session.commit()
