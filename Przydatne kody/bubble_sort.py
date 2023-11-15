@@ -14,4 +14,7 @@ def bubble(data):
         
     return data
         
-bubble([5, 3, 6, 8, 2, 1,])
+bubble([5, 3, 6, 8, 2, 1, 1, 4, 5, 7, 8, 8])
+# bubble([2,3,4,5,1])
+
+
