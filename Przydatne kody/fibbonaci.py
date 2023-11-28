@@ -7,6 +7,8 @@ def fibbonacci(n):
         
     for i in range(1, n + 1):
         a, b = b, a + b
-        print(b)
+        return b
 
-fibbonacci(10) 
+print(fibbonacci(10)) 
+
+#dodać jaki liste (append)
