@@ -1,73 +1,45 @@
 import math
 
-
 t1 = (6, 11, 4)
 t2 = (8, 17, 3)
 t3 = (19, 19, 2)
 t4 = (19, 11, 4)
 t5 = (15, 7, 6)
 t6 = (12, 19, 4)
-start_point = (10, 19)
+start_point = (0, 0)
 end_point = (19, 14)
 
 transmiters =  [t2, t3, t5, t4, t1, t6]
 
-def point(point, transmiter):
+def point(point: tuple[int, int], transmiter: list[tuple[int, int, int]]) -> bool:
     result = []
     for t in transmiter:
-        if (((t[0] - point[0]) ** 2 + (t[1] - point[1]) ** 2) <= (t[2] ** 2)) == True:
+        if (((t[0] - point[0]) ** 2 + (t[1] - point[1]) ** 2) <= (t[2] ** 2)):
             result.append(t)
     return result
 
-
-
-def transmiter_range(x, y):
+def transmiter_range(x: tuple[int, int, int], y: tuple[int, int, int]) -> bool:
     S = round(math.sqrt((y[0] - x[0]) ** 2 + (y[1] - x[1]) ** 2), 2)
-    if (abs(y[2] - x[2])) < S < abs(y[2] + x[2]):
-        return True
-    else:
-        return False
-    
-def range_path(data):
+    return (abs(y[2] - x[2])) < S < abs(y[2] + x[2])
+
+def range_path(data: list[tuple[int, int, int]]) -> set[tuple[int, int, int]]:
     path = []
     for n in data:
         for m in data:
-            if transmiter_range(n, m) == True:
-                if n not in path:
-                    path.append(n)
-                if m not in path:
-                    path.append(m)
-    return path
+            path.append(n)
+            path.append(m)
+    return set(path)
 
-
-
-def solution(start, end, data):
+def solution(start: tuple[int, int], end: tuple[int, int], data: list[tuple[int, int, int]]) -> bool:
     solution_1 = False
     solution_2 = False
     path = range_path(data)
     for s in point(start, data):
-        if s in path:
-            solution_1 = True
-        else:
-            solution_1 = False
-    
+        solution_1 = s in path
+        
     for e in point(end, data):
-        if e in path:
-            solution_2 = True
-        else:
-            solution_2 = False
-    
-    if solution_1 == True and solution_2 == True:
-        return True
-    else:
-        return False
+        solution_2 = e in path
         
-    
-
+    return solution_1 == True and solution_2 == True
+        
 print(solution(start_point, end_point, transmiters)) 
-
-        
-        
-    
-        
-
