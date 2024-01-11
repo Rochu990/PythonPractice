@@ -18,6 +18,34 @@ class TestBackPack(unittest.TestCase):
         items = []
         capacity = 5
         self.assertEqual(backpack(items, capacity), [])
+    
+    def test_bp_1_item(self):
+        items = [Item(10, 10, "ring")]
+        capacity = 10
+        self.assertEqual(backpack(items, capacity), items)
+
+    def test_bp_2_item(self):
+        item =Item(10, 10, "ring")
+        capacity = 20
+        self.assertEqual(backpack([item], capacity), [item, item])
+    
+    def test_bp_3_item(self):
+        ring  = Item(10, 10, "ring")
+        zegarek = Item(5, 4, "zegarek")
+        capacity = 15
+        self.assertEqual(backpack([ring, zegarek], capacity), [ring, zegarek])
+
+    def test_bp_3_item(self):
+        ring  = Item(10, 10, "ring")
+        zegarek = Item(5, 4, "zegarek")
+        capacity = 11
+        self.assertEqual(backpack([ring, zegarek], capacity), [ring])
+        
+    def test_bp_3_item(self):
+        ring  = Item(10, 10, "ring")
+        zegarek = Item(5, 10, "zegarek")
+        capacity = 10
+        self.assertEqual(backpack([ring, zegarek], capacity), [zegarek, zegarek])
  
  
 if __name__ == '__main__':
