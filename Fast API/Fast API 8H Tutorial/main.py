@@ -275,7 +275,7 @@ app = FastAPI()
 
 # Part 11 Extra Data Types
     
-# @app.put("/items/{item)id}")
+# @app.put("/items/{item_id}")
 # async def read_items(
 #     item_id: UUID, 
 #     start_date: datetime | None = Body(None),
