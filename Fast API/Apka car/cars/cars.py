@@ -7,8 +7,8 @@ class Cars:
         car = self.repository.get(id)
         return car.refuel(fuel)
         
-    def add(self, car):
-        return self.repository.add(car)
+    def add(self, id, car):
+        return self.repository.add(id, car)
         
     def drive(self, id, km):
         car = self.repository.get(id)
