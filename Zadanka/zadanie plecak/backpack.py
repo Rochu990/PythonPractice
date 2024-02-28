@@ -39,10 +39,3 @@ def bp(items, capacity):
    
 
 print(bp(itemki, 20))
-
-
-
-
-
-
-

@@ -27,7 +27,6 @@ class Car:
         
         
     def drive(self, km):
-        fuel_after_tank = self.tank_fuel
         fuel = (km / 100) * self.combustion
         self.tank_fuel = self.tank_fuel - fuel
         if self.tank_fuel < 0:

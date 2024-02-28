@@ -1,6 +1,7 @@
 import unittest
 from backpack import bp, Item
 
+
 class TestBackPack(unittest.TestCase):
     # 1 -> nazwa funkcji
     # 2 -> zmienne tworz w funkcji a nie w klasie
@@ -13,55 +14,58 @@ class TestBackPack(unittest.TestCase):
         items = [Item("ring", 10, 10)]
         capacity = 5
         self.assertEqual(bp(items, capacity), [])
- 
+
     def test_backpack_should_be_empty_when_there_is_no_items(self):
         items = []
         capacity = 5
         self.assertEqual(bp(items, capacity), [])
-    
+
     def test_bp_1_item(self):
         items = [Item("ring", 10, 10)]
         capacity = 10
-        self.assertEqual(bp(items, capacity), ['ring'])
+        self.assertEqual(bp(items, capacity), ["ring"])
 
     def test_bp_2_item(self):
-        item =Item("ring", 10, 10)
+        item = Item("ring", 10, 10)
         capacity = 20
-        self.assertEqual(bp([item], capacity), ['ring', 'ring'])
-    
+        self.assertEqual(bp([item], capacity), ["ring", "ring"])
+
     def test_bp_3_item(self):
-        items = [
-            Item("ring", 10, 10),
-            Item("zegarek", 5, 4)
-        ]
+        items = [Item("ring", 10, 10), Item("zegarek", 5, 4)]
         capacity = 15
         self.assertEqual(bp(items, capacity), ["ring", "zegarek"])
 
     def test_bp_3_item(self):
-        items = [
-            Item("ring", 10, 10),
-            Item("zegarek", 5, 4)
-        ]
+        items = [Item("ring", 10, 10), Item("zegarek", 5, 4)]
         capacity = 11
-        self.assertEqual(bp(items, capacity), ['ring'])
-        
+        self.assertEqual(bp(items, capacity), ["ring"])
+
     def test_bp_3_item(self):
-        items = [
-            Item("ring", 10, 10),
-            Item("zegarek", 5, 10)
-        ]
+        items = [Item("ring", 10, 10), Item("zegarek", 5, 10)]
         capacity = 10
         self.assertEqual(bp(items, capacity), ["zegarek", "zegarek"])
-    
+
     def test_8_items_in_bp(self):
         items = [
             Item("zegarek", 3, 7),
             Item("bransoleta", 2, 3),
-            Item("kolczyki", 1, 2)
-            ]
+            Item("kolczyki", 1, 2),
+        ]
         capacity = 20
-        self.assertEqual(bp(items, capacity), ['zegarek', 'zegarek', 'zegarek', 'zegarek', 'zegarek', 'zegarek', 'kolczyki', 'kolczyki'])
- 
- 
-if __name__ == '__main__':
+        self.assertEqual(
+            bp(items, capacity),
+            [
+                "zegarek",
+                "zegarek",
+                "zegarek",
+                "zegarek",
+                "zegarek",
+                "zegarek",
+                "kolczyki",
+                "kolczyki",
+            ],
+        )
+
+
+if __name__ == "__main__":
     unittest.main()
