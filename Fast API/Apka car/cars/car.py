@@ -1,5 +1,6 @@
 import uuid
 
+
 class Car:
     def __init__(self, combustion: int, tank_fuel: int, max_fuel: int):
         self.combustion = combustion
@@ -13,8 +14,7 @@ class Car:
             print("Próbujesz zatankować za dużo")
             self.tank_fuel = self.max_fuel
         return self.tank_fuel
-        
-        
+
     def drive(self, km):
         fuel = (km / 100) * self.combustion
         self.tank_fuel = self.tank_fuel - fuel

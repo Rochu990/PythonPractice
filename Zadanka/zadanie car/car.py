@@ -48,6 +48,3 @@ print(car.refuel(1000))
 # print(car.drive(100))
 print(car.refuel(2))
 print(car.details())
-
-
-

@@ -14,11 +14,8 @@ class Item:
         return self.value / self.weight
 
 
-itemki = [
-            Item("zegarek", 3, 7),
-            Item("bransoleta", 2, 3),
-            Item("kolczyki", 1, 2)
-            ]
+itemki = [Item("zegarek", 3, 7), Item("bransoleta", 2, 3), Item("kolczyki", 1, 2)]
+
 
 def bp(items, capacity):
     if items == []:
@@ -33,9 +30,11 @@ def bp(items, capacity):
         while capacity >= smallest:
             for i in items:
                 while i.weight <= capacity:
-                    capacity -= i.weight 
-                    result.append(i.name)     
-        return  result
-   
+                    capacity -= i.weight
+                    result.append(i.name)
+        return result
+
 
 print(bp(itemki, 20))
+
+array = [1, 2, 3, 4, 5]

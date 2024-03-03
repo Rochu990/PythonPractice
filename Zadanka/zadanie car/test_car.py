@@ -1,10 +1,10 @@
 import unittest
+
 from parameterized import parameterized
+
 from car import Car
 
 
- 
-   
 @parameterized(
             (6, 30, 60, 10, 40),
             (7, 40, 70, 5, 45),
