@@ -1,5 +1,7 @@
 from dataclasses import dataclass
 
+import ipdb
+
 
 @dataclass
 class Item:
@@ -18,6 +20,7 @@ itemki = [Item("zegarek", 3, 7), Item("bransoleta", 2, 3), Item("kolczyki", 1, 2
 
 
 def bp(items, capacity):
+    ipdb.set_trace()
     if items == []:
         return []
     else:
@@ -36,5 +39,3 @@ def bp(items, capacity):
 
 
 print(bp(itemki, 20))
-
-array = [1, 2, 3, 4, 5]

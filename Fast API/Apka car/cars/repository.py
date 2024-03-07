@@ -5,6 +5,7 @@ class Repository:
 
     def add(self, id, car):
         self.cars[id] = car
+        return car
 
     def delete(self, id):
         del self.cars[id]

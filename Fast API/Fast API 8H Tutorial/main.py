@@ -1,18 +1,35 @@
 # source : https://www.youtube.com/playlist?list=PLqAmigZvYxIL9dnYeZEhMoHcoP4zop8-p
 
-from enum import Enum
-from typing import Optional, Literal, Union
-from uuid import UUID
 from datetime import datetime, time, timedelta
+from enum import Enum
+from typing import Literal, Optional, Union
+from uuid import UUID
 
-from fastapi import Body, FastAPI, Query, Path, Cookie, Header, status, Form, File, UploadFile, HTTPException, Request, Depends
-from pydantic import BaseModel, Field, HttpUrl, EmailStr
-from starlette.exceptions import HTTPException as StarletteHTTPException
-from fastapi.responses import JSONResponse, PlainTextResponse
-from fastapi.exceptions import RequestValidationError
-from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
-from fastapi.exception_handlers import http_exception_handler, request_validation_exception_handler
+from fastapi import (
+    Body,
+    Cookie,
+    Depends,
+    FastAPI,
+    File,
+    Form,
+    Header,
+    HTTPException,
+    Path,
+    Query,
+    Request,
+    UploadFile,
+    status,
+)
 from fastapi.encoders import jsonable_encoder
+from fastapi.exception_handlers import (
+    http_exception_handler,
+    request_validation_exception_handler,
+)
+from fastapi.exceptions import RequestValidationError
+from fastapi.responses import JSONResponse, PlainTextResponse
+from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+from pydantic import BaseModel, EmailStr, Field, HttpUrl
+from starlette.exceptions import HTTPException as StarletteHTTPException
 
 app = FastAPI()
 
@@ -53,7 +70,7 @@ app = FastAPI()
 # async def get_food(food_name: FoodEnum):
 #     if food_name == FoodEnum.vegetables:
 #         return {"food_name": food_name, "message": "you are healthy"}
-    
+
 #     if food_name.value == "fruits":
 #         return {
 #             "food_name": food_name,
@@ -76,7 +93,7 @@ app = FastAPI()
 #     if not short:
 #         item.update(
 #             {
-#                 "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus libero." 
+#                 "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus libero."
 #             }
 #         )
 #     return item
@@ -89,7 +106,7 @@ app = FastAPI()
 #     if not short:
 #         item.update(
 #             {
-#                 "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus libero." 
+#                 "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus libero."
 #             }
 #         )
 #     return item
@@ -117,11 +134,11 @@ app = FastAPI()
 #     return result
 
 # @app.get("/read_items")
-# async def read_items(q: str 
+# async def read_items(q: str
 #                      | None = Query(
-#                          None, 
-#                         min_length=3, 
-#                         max_length=10, 
+#                          None,
+#                         min_length=3,
+#                         max_length=10,
 #                         title="Sample query string",
 #                         description="Sample description",
 #                         deprecated=True
@@ -143,13 +160,12 @@ app = FastAPI()
 #     *,
 #     item_id: int = Path(..., title="The ID of the item to get", ge=10, le=100),
 #     q: str = 'hello',
-#     size: float = Query(..., gt=0, lt=7.75)   
+#     size: float = Query(..., gt=0, lt=7.75)
 # ):
 #     results = {"item_id": item_id, "size": size}
 #     if q:
 #         results.update({"q": q})
 #     return results
-
 
 
 # Part 7 -> Body - Multiple Parameters
@@ -183,7 +199,7 @@ app = FastAPI()
 #     if importance:
 #         results.update({"importance": importance})
 #     return results
-    
+
 
 # Part 8 -> Body - Fields
 
@@ -257,27 +273,27 @@ app = FastAPI()
 #     }
 
 # @app.put("/item/{item_id}")
-# async def Update_item(item_id: int, 
+# async def Update_item(item_id: int,
 #                       item: Item = Body(
 #                           ...,
 #                           example={
 #                             "name": "Foo",
 #                             "description": "A very nice Item",
 #                             "price": 16.25,
-#                             "tax": 1.67   
+#                             "tax": 1.67
 #                           },
 #                       ),
 # ):
-                      
+
 #     results = {"item_id": item_id, "item": item}
 #     return results
 
 
 # Part 11 Extra Data Types
-    
+
 # @app.put("/items/{item_id}")
 # async def read_items(
-#     item_id: UUID, 
+#     item_id: UUID,
 #     start_date: datetime | None = Body(None),
 #     end_date: datetime | None = Body(None),
 #     repeat_at: time | None = Body(None),
@@ -287,16 +303,16 @@ app = FastAPI()
 #     duration = end_date - start_process
 #     return {
 #         "item_id": item_id,
-#         "start_date": start_date, 
-#         "end_date": end_date, 
-#         "repeat_at": repeat_at, 
-#         "process_after": process_after, 
-#         "start_process": start_process, 
+#         "start_date": start_date,
+#         "end_date": end_date,
+#         "repeat_at": repeat_at,
+#         "process_after": process_after,
+#         "start_process": start_process,
 #         "duration": duration
 #     }
-    
+
 # Part 12 - Cookie and Header Parameters
-    
+
 # @app.put("/items")
 # async def read_items(
 #     cookie_id: str | None = Cookie(None),
@@ -312,20 +328,20 @@ app = FastAPI()
 #         "User-Agent": user_agent,
 #         "X-token values": x_token
 #     }
-    
+
 # Part 13 - Response Model
-    
+
 # class Item(BaseModel):
 #     name: str
 #     description: str | None = None
 #     price: float
 #     tax: float | None = None
-#     tags: list[str] = []  
+#     tags: list[str] = []
 
 # items = {
 #     "foo": {"name": "Foo", "price": 50.2},
 #     "bar": {"name": "Bar", "description": "The bartenders", "price": 62, "tax": 20.2},
-#     "baz": {"name": "Baz", "description": None, "price": 50.2, "tax": 10.5, "tags": []} 
+#     "baz": {"name": "Baz", "description": None, "price": 50.2, "tax": 10.5, "tags": []}
 # }
 
 # @app.get("/items/{item_id}", response_model=Item, response_model_exclude_unset=True)
@@ -356,8 +372,8 @@ app = FastAPI()
 #     return user
 
 # @app.get(
-#         "/items/{item_id}/name", 
-#         response_model=Item, 
+#         "/items/{item_id}/name",
+#         response_model=Item,
 #         response_model_include={"name", "description"}
 # )
 
@@ -368,25 +384,25 @@ app = FastAPI()
 # @app.get("/items/{item_id/public}", response_model=Item, response_model_exclude={"tax"})
 # async def read_items_public_data(item_id: Literal["foo", "bar", "baz"]):
 #     return items[item_id]
-    
+
 # Part 14 - Extra Models
-    
+
 # class UserBase(BaseModel):
 #     username: str
 #     email: EmailStr
 #     full_name: str | None = None
 
-    
+
 # class UserIn(UserBase):
 #     password: str
-   
+
 
 # class UserOut(UserBase):
 #     pass
 
 # class UserInDB(UserBase):
 #     hashed_password: str
-    
+
 
 # def fake_password_haser(raw_password: str):
 #     return f"supersecret{raw_password}"
@@ -429,7 +445,7 @@ app = FastAPI()
 
 
 # Part 15 - Response Status Codes
-    
+
 
 # @app.post("/items/", status_code=status.HTTP_201_CREATED)
 # async def create_item(name: str):
@@ -475,7 +491,6 @@ app = FastAPI()
 #     return {"filename": [file.filename for file in files]}
 
 
-
 # Part 18 - Forms and Files
 
 # @app.post("/files/")
@@ -499,7 +514,7 @@ app = FastAPI()
 # async def read_item(item_id: str):
 #     if item_id not in items:
 #         raise HTTPException(
-#             status_code=404, 
+#             status_code=404,
 #             detail="Item not found",
 #             headers={"X-Error": "There goes my error"}
 #         )
@@ -568,7 +583,6 @@ app = FastAPI()
 #     return {"item_id": item_id}
 
 
-
 # Part 20 - Path Operation Configuration
 
 # class Item(BaseModel):
@@ -582,8 +596,8 @@ app = FastAPI()
 #     items = "items"
 #     users = "users"
 
-# @app.post("/items", 
-#         response_model=Item, 
+# @app.post("/items",
+#         response_model=Item,
 #         status_code=status.HTTP_201_CREATED,
 #         tags=[Tags.items],
 #         summary="Create an Item",
@@ -602,7 +616,7 @@ app = FastAPI()
 #     - **tax**: if the item doesn't have tax, you can omit this
 #     - **tags**: a sef of unique tag strongs for this item
 #     """
-    
+
 #     return item
 
 # @app.get("/items/", tags=[Tags.items])
@@ -643,7 +657,6 @@ app = FastAPI()
 # @app.get("/items/{item_id}", response_model=Item)
 # async def read_item(item_id: str):
 #     return items.get(item_id)
-    
 
 
 # @app.put("/items/{id}", response_model=Item)
@@ -757,25 +770,27 @@ fake_users_db = {
         full_name="John Doe",
         email="johndoe@example.com",
         hashed_password="fakehashedsecret",
-        disabled=False
+        disabled=False,
     ),
     "alice": dict(
         username="alice",
         full_name="Alice Wonderson",
         email="alice@example.com",
         hashed_password="fakehashedsecret2",
-        disabled=True
-    )
+        disabled=True,
+    ),
 }
 
+
 def fake_hash_password(password: str):
-    return f'fakehashed{password}'
+    return f"fakehashed{password}"
+
 
 class User(BaseModel):
     username: str
     email: str | None = None
     full_name: str | None = None
-    disable: bool | None = None 
+    disable: bool | None = None
 
 
 class UserInDB(User):
@@ -790,7 +805,6 @@ def get_user(db, username: str):
 
 def fake_decode_token(token):
     return get_user(fake_users_db, token)
-   
 
 
 async def get_current_user(token: str = Depends(oauth2_scheme)):
@@ -799,7 +813,7 @@ async def get_current_user(token: str = Depends(oauth2_scheme)):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Invalid authentication credentials",
-            headers={"WWW-Authenticate": "Bearer"}
+            headers={"WWW-Authenticate": "Bearer"},
         )
     return user
 

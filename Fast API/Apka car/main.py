@@ -1,7 +1,6 @@
 from fastapi import FastAPI, Query
 from pydantic import BaseModel
 
-from car import drive_car, refuel_car
 from cars.cars import Cars
 from cars.repository import Repository
 
@@ -25,14 +24,14 @@ async def create_car(car_id: int, car: CarDetails):
     return cars.add(car_id, car.dict())
 
 
-# @app.get("/get_car/{car_id}")
-# async def get_car_by_id(car_id: int):
-#     return cars[car_id]
+@app.get("/get_car/{car_id}")
+async def get_car_by_id(car_id: int):
+    return repository.get(car_id)
 
 
-# @app.put("/refuel_car/{car_id}")
-# async def refue_car(car_id: int, fuel: int | None = Query(default=1)):
-#     return car
+@app.put("/refuel_car/{car_id}")
+async def refue_car(car_id: int, fuel: int | None = Query(default=1)):
+    return cars.refuel(car_id, fuel)
 
 
 # @app.put("/drive/{car_id}")
