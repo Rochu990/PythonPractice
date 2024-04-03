@@ -1,3 +1,5 @@
+# source https://ddeby.pl/blog/10-nietypowych-zachowan-w-python
+
 from datetime import datetime
 
 # Atrybuty klasowe

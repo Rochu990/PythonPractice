@@ -6,7 +6,7 @@ t3 = (19, 19, 2)
 t4 = (19, 11, 4)
 t5 = (15, 7, 6)
 t6 = (12, 19, 4)
-start_point = (0, 0)
+start_point = (10, 19)
 end_point = (19, 14)
 
 transmiters =  [t2, t3, t5, t4, t1, t6]
