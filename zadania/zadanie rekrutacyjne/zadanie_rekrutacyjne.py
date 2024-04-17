@@ -1,3 +1,6 @@
+#należy obliczyć medianę z dni każdego miesiąca licząc do pierwszej niedzieli tego miesiąca. Podstawowe
+# dane w pliku w testem.
+
 import statistics
 from datetime import datetime
 from typing import Union
