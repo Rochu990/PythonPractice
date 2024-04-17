@@ -23,7 +23,7 @@ end_point = Point(19, 14)
 
 transmiters =  [t2, t3, t5, t4, t1, t6]
 
-def point(point: tuple[int, int], transmiter: list[tuple[int, int, int]]) -> bool:
+def point(point: tuple[int, int], transmiter: tuple[int, int, int]) -> bool:
     result = []
     for t in transmiter:
         if (((t.x - point.x) ** 2 + (t.y - point.y) ** 2) <= (t.range ** 2)):
