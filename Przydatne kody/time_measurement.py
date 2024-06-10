@@ -1,16 +1,18 @@
 import time
 
-def timee(func, *args):
-    def measurement():
+
+def time_measurement(func):
+    def measurement(*args):
         start = time.time()
         func(*args)
         end = time.time()
         total_time = end - start
         print(total_time)
+
     return measurement
 
 
-@timee
+@time_measurement
 def bubble(data):
 
     new_data = len(data)
@@ -26,5 +28,6 @@ def bubble(data):
 
     return data
 
-digits = [1, 3, 6, 32, 6, 4, 5]
+
+digits = 20 * [1, 3, 6, 32, 6, 4, 5]
 bubble(digits)
