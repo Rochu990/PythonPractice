@@ -29,5 +29,5 @@ def bubble(data):
     return data
 
 
-digits = 20 * [1, 3, 6, 32, 6, 4, 5]
+digits = 30 * [1, 3, 6, 32, 6, 4, 5]
 bubble(digits)
