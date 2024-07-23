@@ -51,11 +51,11 @@ def signal_range(start_point: Point, end_point: Point, transmiters: list) -> boo
         if point_in_transmiter_range(i, end_point):
             end.append(i)
 
-    for z in connected_transmiters:
+    for j in connected_transmiters:
         for i in transmiters:
             if i in connected_transmiters:
                 continue
-            elif transmiter_range(z, i):
+            elif transmiter_range(j, i):
                 connected_transmiters.append(i)
 
     for i in end:
