@@ -1,11 +1,11 @@
+# ile razy wypadnie sześciokrotnie ta nsama strona monety przy 1000 rzutach?
 import random
-
 
 def experiment():
     def coin_toss():
         values = ["R", "O"]
         result = []
-        while len(result) < 100:
+        while len(result) < 1000:
             result.append(random.choice(values))
         return result
 
